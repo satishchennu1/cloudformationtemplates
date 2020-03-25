@@ -1,0 +1,14 @@
+AWSTemplateFormatVersion: "2019-05-30"
+Description: Deploying a hosted zone in AWS account.
+
+Resources:
+  MyZone:
+    Type: 'AWS::Route53::HostedZone'
+    Properties:
+      Name: containers.dev.uspto.gov
+
+Outputs:
+  MyZone:
+    Value: !Ref MyZone
+  MyZoneServers:
+    Value: !Join [',', !GetAtt MyZone.NameServers]
